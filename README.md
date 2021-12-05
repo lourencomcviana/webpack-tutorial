@@ -1,11 +1,7 @@
 # [Begginer web pack course](https://www.udemy.com/course/webpack-from-beginner-to-advanced/)
 
-## Importar dependências padrões
-
-
-
 ## Run detailed status
-npx webpack --stats detailed
+`npx webpack --stats detailed`
 
 
 ## Assets
@@ -17,6 +13,10 @@ Bundle files into javascript
 - asset/source -> import as source code and inject into javascript
 
 ## Loaders
+Define processamento customizado para os arquivos que corresponderem a regra. Ver webpack.config.js
+
+`npm install css-loader style-loader --save-dev`
+
 
 
 ## Helper webpack (not in the course)

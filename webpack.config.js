@@ -25,6 +25,16 @@ module.exports = {
                 test: /\.svg$/,
                 // Tipo resource vai importar como se fosse um asset. Tal asset não será acessível pela url e estará dentro do bundle do js.
                 type: 'asset/inline'
+            },
+            {
+                // regex
+                test: /\.css$/,
+                // use irá importar o arquivo utilizando um ou mais loaders. neste caso:
+                // - css-loader: le o conteudo do arquivo css e retorna o conteudo
+                // - style-loader: pega o css carregado pelo css-loader e injeta na página usando tags
+                use: [
+                    'style-loader', 'css-loader'
+                ]
             }
         ]
     }

@@ -15,8 +15,8 @@ Bundle files into javascript
 ## Loaders
 Define processamento customizado para os arquivos que corresponderem a regra. Ver webpack.config.js
 
-`npm install css-loader style-loader --save-dev`
-
+- `npm install css-loader style-loader --save-dev`
+- `npm install sass sass-loader --save-dev`
 
 
 ## Helper webpack (not in the course)

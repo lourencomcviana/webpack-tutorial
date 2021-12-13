@@ -40,11 +40,24 @@ module.exports = {
                 // regex
                 test: /\.scss$/,
                 // use irá importar o arquivo utilizando um ou mais loaders. neste caso:
+                // - sass-loader converte scss para css
                 // - css-loader: le o conteudo do arquivo css e retorna o conteudo
                 // - style-loader: pega o css carregado pelo css-loader e injeta na página usando tags
                 use: [
                     'style-loader', 'css-loader', 'sass-loader'
                 ]
+            },
+            {
+                // regex
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets:  ['@babel/env'],
+                        plugins: ['@babel/plugin-proposal-class-properties']
+                    }
+                }
             }
         ]
     }

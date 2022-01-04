@@ -1,6 +1,8 @@
 // only common js is suported on webpack.config
 const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 // minimal configuration
 module.exports = {
     entry: './src/index.js',
@@ -12,7 +14,10 @@ module.exports = {
     mode: 'none',
     plugins: [
         // minify code!!!
-        new TerserPlugin()
+        new TerserPlugin(),
+        new MiniCssExtractPlugin({
+            filename: 'style.css'
+        })
     ],
     // módulos separam como arquivos com regras especiáis devem ser processados.
     module: {
@@ -37,7 +42,7 @@ module.exports = {
                 // - css-loader: le o conteudo do arquivo css e retorna o conteudo
                 // - style-loader: pega o css carregado pelo css-loader e injeta na página usando tags
                 use: [
-                    'style-loader', 'css-loader'
+                    MiniCssExtractPlugin.loader, 'css-loader'
                 ]
             },
             {
@@ -48,7 +53,7 @@ module.exports = {
                 // - css-loader: le o conteudo do arquivo css e retorna o conteudo
                 // - style-loader: pega o css carregado pelo css-loader e injeta na página usando tags
                 use: [
-                    'style-loader', 'css-loader', 'sass-loader'
+                    MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'
                 ]
             },
             {

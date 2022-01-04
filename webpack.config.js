@@ -1,6 +1,6 @@
 // only common js is suported on webpack.config
 const path = require('path');
-
+const TerserPlugin = require('terser-webpack-plugin');
 // minimal configuration
 module.exports = {
     entry: './src/index.js',
@@ -10,6 +10,10 @@ module.exports = {
         path: path.resolve(__dirname,'./dist')
     },
     mode: 'none',
+    plugins: [
+        // minify code!!!
+        new TerserPlugin()
+    ],
     // módulos separam como arquivos com regras especiáis devem ser processados.
     module: {
         rules: [

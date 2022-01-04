@@ -18,6 +18,7 @@ Define processamento customizado para os arquivos que corresponderem a regra. Ve
 - `npm install css-loader style-loader --save-dev`
 - `npm install sass sass-loader --save-dev`
 - `npm install @babel/core babel-loader @babel/preset-env @babel/plugin-proposal-class-properties --save-dev`
+- `npm install terser-webpack-plugin --save-dev`
 
 ## Helper webpack (not in the course)
 Generates webpack 0 config files in a easyer fashion

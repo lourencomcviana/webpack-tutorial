@@ -2,7 +2,7 @@
 const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 // minimal configuration
 module.exports = {
     entry: './src/index.js',
@@ -13,6 +13,16 @@ module.exports = {
     },
     mode: 'none',
     plugins: [
+        // clean dist folder
+        new CleanWebpackPlugin({
+            cleanOnceBeforeBuildPatterns: [
+                // limpar todos os arquivos dentro da pasta do webpack, recursivamente
+                '**/*',
+                // limpar pasta que não é admnistrada pelo webpack ou qualquer outra pasta que seja de interesse antes do webpack rodar. Caminho absoluto serve para outras pastas
+                path.join(process.cwd(), 'build/**/*')
+            ]
+        }),
+
         // minify code!!!
         new TerserPlugin(),
         new MiniCssExtractPlugin({

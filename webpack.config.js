@@ -3,31 +3,29 @@ const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 // minimal configuration
 module.exports = {
     entry: './src/index.js',
     output: {
         filename: 'bundle.[contenthash].js',
         // needs to be an absolute path or ` configuration.output.path: The provided value "./dist" is not an absolute path!` error will pop up!
-        path: path.resolve(__dirname,'./dist')
+        path: path.resolve(__dirname,'./dist'),
+        // configura o webpack para adicionar a tag <publicPath> quando o HtmlWebpackPlugin é utilizado. Deixar vazio pois na versão atual o html está na mesma pasta dos scripts
+        publicPath: ''
     },
     mode: 'none',
     plugins: [
-        // clean dist folder
-        new CleanWebpackPlugin({
-            cleanOnceBeforeBuildPatterns: [
-                // limpar todos os arquivos dentro da pasta do webpack, recursivamente
-                '**/*',
-                // limpar pasta que não é admnistrada pelo webpack ou qualquer outra pasta que seja de interesse antes do webpack rodar. Caminho absoluto serve para outras pastas
-                path.join(process.cwd(), 'build/**/*')
-            ]
-        }),
-
         // minify code!!!
         new TerserPlugin(),
         new MiniCssExtractPlugin({
             filename: 'style.[contenthash].css'
-        })
+        }),
+        // clean dist folder
+        new CleanWebpackPlugin(),
+        // edita o html
+        new HtmlWebpackPlugin()
     ],
     // módulos separam como arquivos com regras especiáis devem ser processados.
     module: {

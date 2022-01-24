@@ -7,7 +7,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
     entry: './src/index.js',
     output: {
-        filename: 'bundle.js',
+        filename: 'bundle.[contenthash].js',
         // needs to be an absolute path or ` configuration.output.path: The provided value "./dist" is not an absolute path!` error will pop up!
         path: path.resolve(__dirname,'./dist')
     },
@@ -16,7 +16,7 @@ module.exports = {
         // minify code!!!
         new TerserPlugin(),
         new MiniCssExtractPlugin({
-            filename: 'style.css'
+            filename: 'style.[contenthash].css'
         })
     ],
     // módulos separam como arquivos com regras especiáis devem ser processados.

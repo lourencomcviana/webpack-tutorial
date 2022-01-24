@@ -26,10 +26,9 @@ module.exports = {
         new CleanWebpackPlugin(),
         // edita o html
         new HtmlWebpackPlugin({
+            template: "src/index.hbs",
             title: "Hello World",
-            meta: {
-                description: 'Some description'
-            }
+            description: 'description'
         })
     ],
     // módulos separam como arquivos com regras especiáis devem ser processados.
@@ -80,6 +79,12 @@ module.exports = {
                         plugins: ['@babel/plugin-proposal-class-properties']
                     }
                 }
+            },
+            {
+                // regex
+                test: /\.hbs$/,
+                exclude: /node_modules/,
+                use: 'handlebars-loader'
             }
         ]
     }

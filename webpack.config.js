@@ -27,7 +27,6 @@ module.exports = {
         // edita o html
         new HtmlWebpackPlugin({
             title: "Hello World",
-            filename: "subfolder/custom_filename.html",
             meta: {
                 description: 'Some description'
             }

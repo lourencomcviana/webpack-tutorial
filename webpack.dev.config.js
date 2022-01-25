@@ -47,7 +47,7 @@ module.exports = {
         new CleanWebpackPlugin(),
         // edita o html
         new HtmlWebpackPlugin({
-            template: "src/index.hbs",
+            template: "src/page-template.hbs",
             title: "Hello World",
             description: 'description'
         })

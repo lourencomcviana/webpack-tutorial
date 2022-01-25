@@ -37,9 +37,25 @@ module.exports = {
         new CleanWebpackPlugin(),
         // edita o html
         new HtmlWebpackPlugin({
-            template: "src/index.hbs",
+            // nome do arquivo gerado
+            filename: "hello-world.html",
+            // entry(s) que será incluida na página
+            chunks: ['hello-world'],
+            // template
+            template: "src/page-template.hbs",
             title: "Hello World",
-            description: 'description'
+            description: 'HelloWorld',
+            // default true no modo production
+            minify: true
+        }),
+        new HtmlWebpackPlugin({
+            filename: "muffin.html",
+            chunks: ['muffin'],
+            template: "src/page-template.hbs",
+            title: "Muffin",
+            description: 'Muffin',
+            // default true no modo production
+            minify: true
         })
     ],
     // módulos separam como arquivos com regras especiáis devem ser processados.

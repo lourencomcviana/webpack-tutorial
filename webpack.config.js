@@ -15,7 +15,7 @@ module.exports = {
         // configura o webpack para adicionar a tag <publicPath> quando o HtmlWebpackPlugin é utilizado. Deixar vazio pois na versão atual o html está na mesma pasta dos scripts
         publicPath: ''
     },
-    mode: 'none',
+    mode: 'production',
     plugins: [
         // minify code!!!
         new TerserPlugin(),

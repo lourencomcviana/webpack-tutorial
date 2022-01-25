@@ -19,6 +19,7 @@ module.exports = {
     plugins: [
         // minify code!!!
         new TerserPlugin(),
+        // extrai css em um arquivo separado
         new MiniCssExtractPlugin({
             filename: 'style.[contenthash].css'
         }),

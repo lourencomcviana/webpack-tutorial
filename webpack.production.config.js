@@ -20,7 +20,8 @@ module.exports = {
         // needs to be an absolute path or ` configuration.output.path: The provided value "./dist" is not an absolute path!` error will pop up!
         path: path.resolve(__dirname,'./dist'),
         // configura o webpack para adicionar a tag <publicPath> quando o HtmlWebpackPlugin é utilizado. Deixar vazio pois na versão atual o html está na mesma pasta dos scripts
-        publicPath: ''
+        // adicionado prefixo static para funcionar o servidor express
+        publicPath: '/static/'
     },
     // utilizado para aprimorar a experência de desenvolvimento em ambientes de desenvolvimento ou produção.
     // - ambiente de desenvolvimento: nada é minificado, tudo tem sourcemaps

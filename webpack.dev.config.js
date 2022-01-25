@@ -1,7 +1,5 @@
 // only common js is suported on webpack.config
 const path = require('path');
-const TerserPlugin = require('terser-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -15,14 +13,14 @@ module.exports = {
         // configura o webpack para adicionar a tag <publicPath> quando o HtmlWebpackPlugin é utilizado. Deixar vazio pois na versão atual o html está na mesma pasta dos scripts
         publicPath: ''
     },
+    // utilizado para aprimorar a experência de desenvolvimento em ambientes de desenvolvimento ou produção.
+    // - ambiente de desenvolvimento: nada é minificado, tudo tem sourcemaps
+    // - ambiente de produção: tudo é minificado até o máximo possível, não existem source maps
+    // existem outras diferenças mas é minimamente isso
     mode: 'development',
     plugins: [
-        // minify code!!!
-        new TerserPlugin(),
-        // extrai css em um arquivo separado
-        new MiniCssExtractPlugin({
-            filename: 'style.[contenthash].css'
-        }),
+        // não precisa minify code em development!!!
+        // não precisa de hash em development
         // clean dist folder
         new CleanWebpackPlugin(),
         // edita o html
@@ -55,7 +53,7 @@ module.exports = {
                 // - css-loader: le o conteudo do arquivo css e retorna o conteudo
                 // - style-loader: pega o css carregado pelo css-loader e injeta na página usando tags
                 use: [
-                    MiniCssExtractPlugin.loader, 'css-loader'
+                    'style-loader', 'css-loader'
                 ]
             },
             {
@@ -66,7 +64,7 @@ module.exports = {
                 // - css-loader: le o conteudo do arquivo css e retorna o conteudo
                 // - style-loader: pega o css carregado pelo css-loader e injeta na página usando tags
                 use: [
-                    MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'
+                    'style-loader', 'css-loader', 'sass-loader'
                 ]
             },
             {

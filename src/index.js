@@ -13,5 +13,3 @@ if (process.env.NODE_ENV === 'production') {
 } else {
     console.log('unknow mode');
 }
-
-helloWorldButton.error();

@@ -33,6 +33,7 @@ Adicionam comportamento ao webpack
 ## Server
 O servidor de desenvolvimento do webpack permite hotreload do código para desenvolvimento mais ágil!
 - `npm install webpack-dev-server --save-dev`
+- para iniciar o servidor `npm start` rodando na porta 3000
 
 ## Helper webpack (not in the course)
 Generates webpack 0 config files in a easyer fashion

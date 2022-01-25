@@ -30,6 +30,9 @@ Adicionam comportamento ao webpack
 - `npm install html-webpack-plugin --save-dev`
 - `npm install clean-webpack-plugin --save-dev`
 
+## Server
+O servidor de desenvolvimento do webpack permite hotreload do código para desenvolvimento mais ágil!
+- `npm install webpack-dev-server --save-dev`
 
 ## Helper webpack (not in the course)
 Generates webpack 0 config files in a easyer fashion

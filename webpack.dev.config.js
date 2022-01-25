@@ -3,13 +3,15 @@ const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const distPath = path.resolve(__dirname,'./dist');
 // minimal configuration
 module.exports = {
     entry: './src/index.js',
     output: {
-        filename: 'bundle.[contenthash].js',
+        // não precisa de hash em development
+        filename: 'bundle.js',
         // needs to be an absolute path or ` configuration.output.path: The provided value "./dist" is not an absolute path!` error will pop up!
-        path: path.resolve(__dirname,'./dist'),
+        path: distPath,
         // configura o webpack para adicionar a tag <publicPath> quando o HtmlWebpackPlugin é utilizado. Deixar vazio pois na versão atual o html está na mesma pasta dos scripts
         publicPath: ''
     },
@@ -18,6 +20,19 @@ module.exports = {
     // - ambiente de produção: tudo é minificado até o máximo possível, não existem source maps
     // existem outras diferenças mas é minimamente isso
     mode: 'development',
+    devServer: {
+        port: 9000,
+        static: {
+            // diretório é o mesmo do path
+            directory: distPath
+        },
+        devMiddleware: {
+            // arquivo principal
+            index: 'index.html',
+            // escreve os arquivos em disco para utilizar no servidor, ao invés de somente utilizar na memória. Útil para alguns casos de debug mas pode ser um pouco mais lento
+            writeToDisk: true
+        }
+    },
     plugins: [
         // não precisa minify code em development!!!
         // não precisa de hash em development

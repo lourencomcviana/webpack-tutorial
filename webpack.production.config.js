@@ -8,6 +8,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     entry: './src/index.js',
     output: {
+        // contenthash insere o hash md5 do arquivo no nome para melhorar cacheamento do navegador
         filename: 'bundle.[contenthash].js',
         // needs to be an absolute path or ` configuration.output.path: The provided value "./dist" is not an absolute path!` error will pop up!
         path: path.resolve(__dirname,'./dist'),

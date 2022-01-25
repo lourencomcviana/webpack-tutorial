@@ -29,8 +29,10 @@ module.exports = {
     mode: 'production',
     optimization: {
         splitChunks:{
-
-            chunks: 'all'
+            // pega bundles grandes e separa em outro arquivo
+            chunks: 'all',
+            // tamanho minimo para ser separado em outro bundle, 3000 é aproximadamente 3kb
+            minSize: 3000
         }
     },
     plugins: [

@@ -34,6 +34,13 @@ Adicionam comportamento ao webpack
 O servidor de desenvolvimento do webpack permite hotreload do código para desenvolvimento mais ágil!
 - `npm install webpack-dev-server --save-dev`
 
+## Outras dependências
+### Lodash
+utilizado para testar compartilhamento de bundles
+- `npm install --save lodash`
+### React
+- `npm install --save react`
+- 
 ## Helper webpack (not in the course)
 Generates webpack 0 config files in a easyer fashion
 - npm install -D @webpack-cli/generators

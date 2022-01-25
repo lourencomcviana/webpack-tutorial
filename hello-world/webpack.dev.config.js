@@ -7,11 +7,7 @@ const distPath = path.resolve(__dirname,'./dist');
 // minimal configuration
 module.exports = {
     // agora entry point é um object para aceitar múltiplas páginas
-    entry:
-    {
-        "hello-world": './src/helloWorld.js',
-        "muffin": './src/muffin.js'
-    },
+    entry: './src/helloWorld.js',
     output: {
         // [name] se refere ao entry point
         // possível usar [id] ao invés de [name]
@@ -20,7 +16,7 @@ module.exports = {
         // needs to be an absolute path or ` configuration.output.path: The provided value "./dist" is not an absolute path!` error will pop up!
         path: distPath,
         // configura o webpack para adicionar a tag <publicPath> quando o HtmlWebpackPlugin é utilizado. Deixar vazio pois na versão atual o html está na mesma pasta dos scripts
-        publicPath: ''
+        publicPath: '/static/'
     },
     // utilizado para aprimorar a experência de desenvolvimento em ambientes de desenvolvimento ou produção.
     // - ambiente de desenvolvimento: nada é minificado, tudo tem sourcemaps
@@ -28,14 +24,14 @@ module.exports = {
     // existem outras diferenças mas é minimamente isso
     mode: 'development',
     devServer: {
-        port: 9000,
+        port: 9001,
         static: {
             // diretório é o mesmo do path
             directory: distPath
         },
         devMiddleware: {
             // arquivo principal
-            index: 'index.html',
+            index: 'hello-world.html',
             // escreve os arquivos em disco para utilizar no servidor, ao invés de somente utilizar na memória. Útil para alguns casos de debug mas pode ser um pouco mais lento
             writeToDisk: true
         }
@@ -49,47 +45,15 @@ module.exports = {
         new HtmlWebpackPlugin({
             // nome do arquivo gerado
             filename: "hello-world.html",
-            // entry(s) que será incluida na página
-            chunks: ['hello-world'],
             // template
             template: "src/page-template.hbs",
             title: "Hello World",
             description: 'HelloWorld'
-        }),
-        new HtmlWebpackPlugin({
-            filename: "muffin.html",
-            chunks: ['muffin'],
-            template: "src/page-template.hbs",
-            title: "Muffin",
-            description: 'Muffin'
         })
     ],
     // módulos separam como arquivos com regras especiáis devem ser processados.
     module: {
         rules: [
-            // le-se para essa regra, aplicar esse tipo de módulo
-            {
-                // regex
-                test: /\.(png|jpg)$/,
-                // Tipo resource vai importar como se fosse um asset. Tal asset será acessível pela url pois é um resource. um arquivo independente será gerado no bundle final
-                type: 'asset/resource'
-            },
-            {
-                // regex
-                test: /\.svg$/,
-                // Tipo resource vai importar como se fosse um asset. Tal asset não será acessível pela url e estará dentro do bundle do js.
-                type: 'asset/inline'
-            },
-            {
-                // regex
-                test: /\.css$/,
-                // use irá importar o arquivo utilizando um ou mais loaders. neste caso:
-                // - css-loader: le o conteudo do arquivo css e retorna o conteudo
-                // - style-loader: pega o css carregado pelo css-loader e injeta na página usando tags
-                use: [
-                    'style-loader', 'css-loader'
-                ]
-            },
             {
                 // regex
                 test: /\.scss$/,
@@ -108,8 +72,7 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets:  ['@babel/env'],
-                        plugins: ['@babel/plugin-proposal-class-properties']
+                        presets:  ['@babel/env']
                     }
                 }
             },

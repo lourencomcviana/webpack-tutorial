@@ -1,6 +1,9 @@
 # [Begginer web pack course](https://www.udemy.com/course/webpack-from-beginner-to-advanced/)
 Ver arquivo [webpack.config.js](./webpack.config.js) para mais detalhes no uso de cada plugin, loader, etc
 
+##[github original](https://github.com/vp-online-courses/webpack-tutorial)
+o tutorial original está dividido em branchs. Bem organizado, existem diferenças mas é uma ótima base para referência
+
 ## Run detailed status
 `npx webpack --stats detailed`
 
@@ -40,7 +43,7 @@ utilizado para testar compartilhamento de bundles
 - `npm install --save lodash`
 ### React
 - `npm install --save react`
-- 
+
 ## Helper webpack (not in the course)
 Generates webpack 0 config files in a easyer fashion
 - npm install -D @webpack-cli/generators

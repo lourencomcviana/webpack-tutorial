@@ -5,3 +5,10 @@ const heading = new Heading();
 heading.render('muffin');
 const muffinImage = new MuffinImage();
 muffinImage.render();
+
+import('HelloWorldApp/HelloWorldButton')
+    .then(HelloWordButtonModule =>{
+        const HelloWordButton = HelloWordButtonModule.default;
+        const helloWordButton = new HelloWordButton();
+        helloWordButton.render();
+    })

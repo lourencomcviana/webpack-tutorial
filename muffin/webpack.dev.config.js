@@ -2,7 +2,7 @@
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+const { ModuleFederationPlugin } = require('webpack').container;
 const distPath = path.resolve(__dirname,'./dist');
 // minimal configuration
 module.exports = {
@@ -16,7 +16,8 @@ module.exports = {
         // needs to be an absolute path or ` configuration.output.path: The provided value "./dist" is not an absolute path!` error will pop up!
         path: distPath,
         // configura o webpack para adicionar a tag <publicPath> quando o HtmlWebpackPlugin é utilizado. Deixar vazio pois na versão atual o html está na mesma pasta dos scripts
-        publicPath: '/static/'
+        // no momento, public path precisa ser exato pois a url que o module federation vai configurar é essa
+        publicPath:  'http://localhost:9002/'
     },
     // utilizado para aprimorar a experência de desenvolvimento em ambientes de desenvolvimento ou produção.
     // - ambiente de desenvolvimento: nada é minificado, tudo tem sourcemaps
@@ -47,6 +48,14 @@ module.exports = {
             template: "src/page-template.hbs",
             title: "Muffin",
             description: 'Muffin'
+        }),
+        new ModuleFederationPlugin({
+            name: 'KiwiApp',
+            filename: 'remoteEntry.js',
+            // importando módulo de helloworldapp
+            remotes: {
+                HelloWorldApp: 'HelloWorldApp@http://localhost:9001/remoteEntry.js'
+            }
         })
     ],
     // módulos separam como arquivos com regras especiáis devem ser processados.

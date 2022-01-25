@@ -6,10 +6,17 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // minimal configuration
 module.exports = {
-    entry: './src/index.js',
+    entry:
+    {
+        "hello-world": './src/helloWorld.js',
+        "muffin": './src/muffin.js'
+    },
     output: {
         // contenthash insere o hash md5 do arquivo no nome para melhorar cacheamento do navegador
-        filename: 'bundle.[contenthash].js',
+        // [name] se refere ao entry point
+        // possível usar [id] ao invés de [name]
+        // pode usar uma função para gerar o nome
+        filename: '[name].[contenthash].js',
         // needs to be an absolute path or ` configuration.output.path: The provided value "./dist" is not an absolute path!` error will pop up!
         path: path.resolve(__dirname,'./dist'),
         // configura o webpack para adicionar a tag <publicPath> quando o HtmlWebpackPlugin é utilizado. Deixar vazio pois na versão atual o html está na mesma pasta dos scripts
@@ -24,7 +31,7 @@ module.exports = {
         // terser plugin é padrão em production
         // extrai css em um arquivo separado
         new MiniCssExtractPlugin({
-            filename: 'style.[contenthash].css'
+            filename: '[name].[contenthash].css'
         }),
         // clean dist folder
         new CleanWebpackPlugin(),

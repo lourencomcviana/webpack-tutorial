@@ -6,10 +6,17 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const distPath = path.resolve(__dirname,'./dist');
 // minimal configuration
 module.exports = {
-    entry: './src/index.js',
+    // agora entry point é um object para aceitar múltiplas páginas
+    entry:
+    {
+        "hello-world": './src/helloWorld.js',
+        "muffin": './src/muffin.js'
+    },
     output: {
-        // não precisa de hash em development
-        filename: 'bundle.js',
+        // [name] se refere ao entry point
+        // possível usar [id] ao invés de [name]
+        // pode usar uma função para gerar o nome
+        filename: '[name].js',
         // needs to be an absolute path or ` configuration.output.path: The provided value "./dist" is not an absolute path!` error will pop up!
         path: distPath,
         // configura o webpack para adicionar a tag <publicPath> quando o HtmlWebpackPlugin é utilizado. Deixar vazio pois na versão atual o html está na mesma pasta dos scripts

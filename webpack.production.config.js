@@ -27,6 +27,12 @@ module.exports = {
     // - ambiente de produção: tudo é minificado até o máximo possível, não existem source maps
     // existem outras diferenças mas é minimamente isso
     mode: 'production',
+    optimization: {
+        splitChunks:{
+
+            chunks: 'all'
+        }
+    },
     plugins: [
         // terser plugin é padrão em production
         // extrai css em um arquivo separado

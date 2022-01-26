@@ -1,5 +1,5 @@
 $font-size: 20px;
-$button-background-color: green;
+$button-background-color: blue;
 $button-font-color: white;
 $text-font-color: red;
 
@@ -8,6 +8,7 @@ $text-font-color: red;
     padding: 7px 15px;
     background: $button-background-color;
     color: $button-font-color;
+    outline: none;
     outline: none;
 }
 

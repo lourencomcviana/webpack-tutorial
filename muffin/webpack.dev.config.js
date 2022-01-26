@@ -50,11 +50,14 @@ module.exports = {
             description: 'Muffin'
         }),
         new ModuleFederationPlugin({
-            name: 'KiwiApp',
+            name: 'MuffinApp',
             filename: 'remoteEntry.js',
             // importando módulo de helloworldapp
             remotes: {
-                HelloWorldApp: 'HelloWorldApp@http://localhost:9001/remoteEntry.js'
+                HelloWorldApp: 'HelloWorldApp@http://localhost:9001/remoteEntry.js',
+            },
+            exposes: {
+               './MuffinPage': './src/components/muffin-page/muffin-page.js'
             }
         })
     ],

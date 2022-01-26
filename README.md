@@ -38,11 +38,14 @@ O servidor de desenvolvimento do webpack permite hotreload do código para desen
 - `npm install webpack-dev-server --save-dev`
 
 ## Outras dependências
+utilizado somente para testar compartilhamento de bundles e atomização
 ### Lodash
-utilizado para testar compartilhamento de bundles
 - `npm install --save lodash`
 ### React
 - `npm install --save react`
+
+## Relacionamento entre as aplicações com module federation
+[![](https://mermaid.ink/img/pako:eNp1j7FuAjEQRH9ltdUhcXzAFUjhLhIpUoFEgVNs2D3OwvYePruIgH-PiUCiyVSjmVfMXPCgLNjgMdI4wLYzAYre9h1Nw7dS5C-o6yWsqrU4p7DT6Hj2D9RWn7nvbXj07V_YVR-ejgItjcnqS7eol9dzpsAKUZlgSsWT0yBXWN0pnKOX6Mly2Xe5JwbTIF4MNsUyxZNBE26FyyNTkne2SSM2PblJ5kg56eYnHLBJMcsT6iyVr_5B3X4B2M9SMw)](https://mermaid.live/edit#pako:eNp1j7FuAjEQRH9ltdUhcXzAFUjhLhIpUoFEgVNs2D3OwvYePruIgH-PiUCiyVSjmVfMXPCgLNjgMdI4wLYzAYre9h1Nw7dS5C-o6yWsqrU4p7DT6Hj2D9RWn7nvbXj07V_YVR-ejgItjcnqS7eol9dzpsAKUZlgSsWT0yBXWN0pnKOX6Mly2Xe5JwbTIF4MNsUyxZNBE26FyyNTkne2SSM2PblJ5kg56eYnHLBJMcsT6iyVr_5B3X4B2M9SMw)
 
 ## Helper webpack (not in the course)
 Generates webpack 0 config files in a easyer fashion

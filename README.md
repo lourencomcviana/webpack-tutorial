@@ -1,7 +1,7 @@
 # [Begginer web pack course](https://www.udemy.com/course/webpack-from-beginner-to-advanced/)
 Ver arquivo [webpack.config.js](./webpack.config.js) para mais detalhes no uso de cada plugin, loader, etc
 
-##[github original](https://github.com/vp-online-courses/webpack-tutorial)
+## [github original](https://github.com/vp-online-courses/webpack-tutorial)
 o tutorial original está dividido em branchs. Bem organizado, existem diferenças mas é uma ótima base para referência
 
 ## Run detailed status
